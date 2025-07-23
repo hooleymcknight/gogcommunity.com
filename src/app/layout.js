@@ -13,8 +13,6 @@ const metadata = {
 export default async function RootLayout({ children }) {
     const session = await getServerSession(options);
 
-    console.log(session.user);
-
     return (
         <html lang="en">
             <head>

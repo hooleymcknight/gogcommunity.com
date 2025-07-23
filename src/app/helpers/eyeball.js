@@ -34,10 +34,10 @@ export default function Eyeball() {
                     document.querySelector('.eye-container').classList.remove('panicking');
                 }
 
-                var x = (getOffset(eyeball).left) + (eyeball.clientWidth / 2);
-                var y = (getOffset(eyeball).top) + (eyeball.clientHeight / 2);
-                var rad = Math.atan2(e.pageX - x, e.pageY - y);
-                var rot = (rad * (180 / Math.PI) * -1) - 90;
+                let x = (getOffset(eyeball).left) + (eyeball.clientWidth / 2);
+                let y = (getOffset(eyeball).top) + (eyeball.clientHeight / 2);
+                let rad = Math.atan2(e.pageX - x, e.pageY - y);
+                let rot = (rad * (180 / Math.PI) * -1) - 90;
                 const styles = {
                     '-webkit-transform': 'rotate(' + rot + 'deg)',
                     '-moz-transform': 'rotate(' + rot + 'deg)',

@@ -16,8 +16,17 @@ export const options = {
             async authorize(credentials) {
                 const allAccounts = await db.users.findFirst({
                     where: {
-                        username: credentials?.username,
-                        type: 'admin',
+                        AND: [
+                            {
+                                OR: [
+                                    { username: credentials?.username, },
+                                    { email: credentials?.username, },
+                                ]
+                            },
+                            {
+                                type: 'admin'
+                            }
+                        ]
                     }
                 });
 

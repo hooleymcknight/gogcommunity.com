@@ -40,8 +40,8 @@ export default function Home() {
             <div className="fixed w-full top-0 left-0 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
                 <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start menu-hidden">
 
-                    <Link href="/admin" className="login-link">
-                        <Image src="/fireteam/triangle.png" alt="outline of GoG Community logo" width={40} height={40} />
+                    <Link href="/portal" className="login-link fireteam-tag">
+                        <Image src="/fireteam/triangle.png" alt="triangle icon" width={40} height={40} />
                         {displayName ? displayName : 'Xx_Log-In-Here_xX'}
                     </Link>
 

@@ -24,3 +24,117 @@ body {
   color: var(--foreground);
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
+
+.main-container .homepage-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+}
+
+/* fireteam tag */
+.fireteam-tag {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 240px;
+    padding: 8px 20px;
+    border: 1px solid #fff;
+}
+
+.fireteam-tag svg,
+.fireteam-tag img {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+/* navbar */
+.navbar {
+    position: relative;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    position: relative;
+    padding: 40px 0;
+}
+
+.navbar-buttons a {
+    background: #fff;
+    color: #111;
+    font-size: 20px;
+    width: 200px;
+    text-align: center;
+    border: 1px solid #fff;
+    transition: all 0.2s ease;
+}
+
+.navbar-buttons a:hover {
+    background: #111;
+    color: #fff;
+}
+
+.navbar-buttons .wisp-container {
+    position: absolute;
+    bottom: -20px;
+    transition: left 0.8s ease, bottom 0.8s ease;
+}
+
+.wisp-container:first-of-type {
+    left: 0;
+}
+.wisp {
+    transform-origin: 35%;
+    transition: all 0.2s ease;
+}
+
+@keyframes hoveringWisp {
+    from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes hoveringWispReverse {
+    from {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+    to {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+/* .navbar:hover  */
+.navbar-buttons .wisp-container:nth-of-type(2n + 1) .wisp {
+    animation: hoveringWisp 2s linear infinite;
+    transform-origin: 40%;
+}
+/* .navbar:hover  */
+.navbar-buttons .wisp-container:nth-of-type(2n) .wisp {
+    animation: hoveringWispReverse 2.5s linear infinite;
+}
