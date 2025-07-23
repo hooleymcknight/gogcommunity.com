@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // reactStrictMode: true,
-    // distDir: 'output'
+    // output: 'export',
+    reactStrictMode: false,
+    // distDir: 'build'
     // outputFileTracing: false
 }
 

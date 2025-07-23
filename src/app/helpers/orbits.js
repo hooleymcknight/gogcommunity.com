@@ -1,7 +1,7 @@
 'use client';
 import Image from "next/image";
 import Link from "next/link";
-import './styles/orbits.css';
+import '../styles/orbits.css';
 
 const nodeArrangement = {
     "1": [15, 208, 108, 320],

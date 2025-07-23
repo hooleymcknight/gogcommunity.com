@@ -25,7 +25,7 @@ export default function ChangePasswordButton({ onDataSend }) {
                 :
                 ''
             }
-            <button onClick={(e) => {handleClick(e)}}>Change Password</button>
+            <button id="changePW" onClick={(e) => {handleClick(e)}}>Change Password</button>
         </>
     );
 }

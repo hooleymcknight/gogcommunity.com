@@ -10,3 +10,65 @@
     background-position: center center;
     background-size: cover;
 }
+
+.eye-container {
+    background: #fff;
+    border-radius: 50%;
+    border: 8px solid #000;
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.eyeball {
+    --orbit: 110px;
+    background: #000;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(10% - 10px);
+    transform: rotate(360deg);
+    transform-origin: calc(calc(var(--orbit) / 2) + 10px);
+}
+
+@keyframes panickingEye {
+    0% {margin-left: -2px; margin-right: 2px;}
+    50% {margin-left: 2px; margin-right: -2px;}
+    100% {margin-left: -2px; margin-right: 2px;}
+}
+
+.eye-container.panicking .eyeball {
+    transform: none;
+    transform-origin: center;
+    left: calc(50% - 10px);
+    top: calc(50% - 10px);
+    height: 20px;
+    width: 20px;
+    animation: panickingEye 0.01s infinite;
+}
+
+/* wisp! */
+
+@keyframes radiatingWisp {
+    0% {background-size: 80% 80%}
+    50% {background-size: 100% 100%}
+    100% {background-size: 80% 80%} /* https://codepen.io/whipcat/pen/ExKPQqZ */
+}
+
+.wisp {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-position: center;
+    background-origin: 0;
+    /* background: radial-gradient(#fff, #ffffff00, #ffffff00); */
+    /* background: radial-gradient(rgba(255, 255 255, 0.1), rgba(255,255,255,1));
+    background: -webkit-radial-gradient(rgba(255, 255 255, 0.1), rgba(255,255,255,1)); */
+
+    background: radial-gradient(closest-corner, #fff, #ffffff00, #ffffff00, #ffffff00);
+    animation: radiatingWisp 0.8s ease infinite;
+    -webkit-animation: radiatingWisp 0.8s ease infinite;
+    -moz-animation: radiatingWisp 0.8s ease infinite;
+}
