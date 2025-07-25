@@ -2,18 +2,25 @@
 import { useState } from 'react';
 
 
-export default function ChangePasswordButton({ required, onDataSend }) {
+export default function ChangePasswordButton({ required, onDataSend, updatePwChangeRequired }) {
     const [changingPassword, setChangingPassword] = useState(false);
 
-    const handleClick = async (e) => {
+    const handleClick = async (e, firstReset) => {
         const pwContainer = e.target.parentElement;
         if (changingPassword) {
             let inputValue = pwContainer.querySelector('input#new-pw-1')?.value;
             let repeatValue = pwContainer.querySelector('input#new-pw-2')?.value;
             if (inputValue === repeatValue) {
-                let currentPW = pwContainer.querySelector('input#current-pw')?.value;
+                let currentPW;
+                if (firstReset) {
+                    currentPW = false;
+                }
+                else {
+                    currentPW = pwContainer.querySelector('input#current-pw')?.value;
+                }
                 const updated = await onDataSend(inputValue, currentPW);
                 if (updated) {
+                    updatePwChangeRequired(false);
                     setChangingPassword(false);
                 }
                 else {
@@ -42,11 +49,14 @@ export default function ChangePasswordButton({ required, onDataSend }) {
                     <div className="change-pw-modal">
                         <h2>Please reset your password immediately.</h2>
                         { changingPassword ?
-                            <input type="password" placeholder="new password" />
+                            <>
+                                <input id="new-pw-1" type="password" placeholder="new password" />
+                                <input id="new-pw-2" type="password" placeholder="repeat it" />
+                            </>
                             :
                             ''
                         }
-                        <button id="changePW" className="modal-btn" onClick={(e) => {handleClick(e)}}>Change Password</button>
+                        <button id="changePW" className="modal-btn" onClick={(e) => {handleClick(e, false)}}>Change Password</button>
                     </div>
                 </div>
             :

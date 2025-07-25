@@ -2,8 +2,12 @@
 import { useState } from 'react';
 import ChangePasswordButton from "./changePW";
 import { updateServerData } from "./updateServerData";
+import { useSession } from '@/app/SessionProvider';
 
 export default function AccountInfo({ session, onDataSend }) {
+    // const { session, updateSession } = useSession();
+    const { updateSession } = useSession();
+    console.log(updateSession);
 
     return (
         <>
@@ -21,7 +25,7 @@ export default function AccountInfo({ session, onDataSend }) {
             </div>
             <div className="acct-info-section" data-section="password">
                 <h3>Password:</h3>
-                <ChangePasswordButton required={session.user.needsReset ? true : false} onDataSend={updateServerData} />
+                <ChangePasswordButton required={session.user.needsReset ? true : false} updatePwChangeRequired={(x) => { updateSession({ user: { ...session.user, needsReset: false } }) }} onDataSend={updateServerData} />
             </div>
             
         </>

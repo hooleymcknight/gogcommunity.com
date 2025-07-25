@@ -12,7 +12,7 @@ const portalTabs = ['Account', 'Events'];
 
 export default function Portal() {
     const [activeTab, setActiveTab] = useState(portalTabs[0]);
-    const session = useSession();
+    const session = useSession().sessionData;
 
     return (
         <div className="main-container grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">

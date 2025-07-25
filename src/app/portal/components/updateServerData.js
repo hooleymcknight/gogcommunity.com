@@ -10,17 +10,24 @@ const db = new PrismaClient();
 async function getUserData(newValue, currentPW) {
     const session = await getServerSession(options);
     const password = newValue;
+    // console.log(newValue, currentPW)
     const hashedPassword = bcrypt.hashSync(password, salt);
-    const hashedCurrentPW = bcrypt.hashSync(currentPW, salt);
-
     const accountInfo = await db.users.findFirst({
         where: {
             username: session.user.username,
-            password: hashedCurrentPW,
         }
     });
 
-    if (accountInfo) {
+    let matchingCurrent;
+    if (currentPW) {
+        const hashedCurrentPW = bcrypt.hashSync(currentPW, salt);
+        matchingCurrent = (hashedCurrentPW == bcrypt.hashSync(accountInfo.password));
+    }
+    else {
+        matchingCurrent = true;
+    }
+
+    if (accountInfo && matchingCurrent) {
         // this does the thing, not just says it
         const updatePassword = await db.users.update({
             where: {
@@ -31,7 +38,7 @@ async function getUserData(newValue, currentPW) {
                 password: hashedPassword,
             },
         });
-
+        
         return { hashedPassword };
     }
     else {
@@ -40,6 +47,7 @@ async function getUserData(newValue, currentPW) {
 }
 
 export async function updateServerData(newValue, currentPW) {
+    // console.log(newValue, currentPW)
     const { hashedPassword } = await getUserData(newValue, currentPW);
     if (hashedPassword) {
         const isMatch = bcrypt.compareSync(newValue, hashedPassword);
