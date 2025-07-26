@@ -7,10 +7,31 @@ import bcrypt from 'bcryptjs';
 const salt = bcrypt.genSaltSync(10);
 const db = new PrismaClient();
 
+async function addEventDB(inputData) {
+    let dt = `${inputData.date} ${inputData.time}`;
+
+    const insertEventData = await db.events.create({
+        data: {
+            name: inputData.name,
+            description: inputData.description,
+            datetime: new Date(dt).toISOString(),
+            location: inputData.location,
+            host: inputData.host,
+            author: inputData.author,
+        }
+    });
+}
+
+export async function createNewEvent(data) {
+    addEventDB(data)
+        .catch((e) => {
+            console.error(e);
+        });
+}
+
 async function getUserData(newValue, currentPW) {
     const session = await getServerSession(options);
     const password = newValue;
-    // console.log(newValue, currentPW)
     const hashedPassword = bcrypt.hashSync(password, salt);
     const accountInfo = await db.users.findFirst({
         where: {
@@ -46,8 +67,7 @@ async function getUserData(newValue, currentPW) {
     }
 }
 
-export async function updateServerData(newValue, currentPW) {
-    // console.log(newValue, currentPW)
+export async function updateServerPassword(newValue, currentPW) {
     const { hashedPassword } = await getUserData(newValue, currentPW);
     if (hashedPassword) {
         const isMatch = bcrypt.compareSync(newValue, hashedPassword);
