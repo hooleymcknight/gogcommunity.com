@@ -14,7 +14,8 @@ export default function Home() {
     const displayName = session?.user?.username;
 
     const skipIntro = () => {
-        const mainMenu = document.querySelector('main');
+        console.log('skipIntro')
+        const mainMenu = document.querySelector('.main-container');
         mainMenu.classList.remove('menu-hidden');
 
         const videoContainer = document.querySelector('.background-video');
@@ -24,12 +25,12 @@ export default function Home() {
     }
 
     useEffect(() => {
-        const mainMenu = document.querySelector('main');
+        const mainMenu = document.querySelector('.main-container');
         if (sessionStorage.getItem('intro-animation-shown') == 'true') {
             mainMenu.classList.remove('menu-hidden');
         }
         else {
-            sessionStorage.setItem('intro-animation-shown', 'true');
+            // sessionStorage.setItem('intro-animation-shown', 'true');
             const videoContainer = document.querySelector('.background-video');
 
             videoContainer.classList.remove('video-hidden');
@@ -37,6 +38,7 @@ export default function Home() {
             setTimeout(() => {
                 mainMenu.classList.remove('menu-hidden');
                 videoContainer.querySelector('video').style.opacity = 0;
+                videoContainer.querySelector('button').style.display = 'none';
             }, 6000);
         }
     }, []);
@@ -50,8 +52,8 @@ export default function Home() {
                 </video>
                 <button id="skip-intro" onClick={skipIntro}>Skip <FontAwesomeIcon icon={faChevronRight} /></button>
             </div>
-            <div className="fixed w-full top-0 left-0 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-                <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start menu-hidden">
+            <div className="main-container fixed w-full top-0 left-0 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 menu-hidden">
+                <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
 
                     <Link href="/portal" className="login-link fireteam-tag">
                         <Image src="/fireteam/triangle.png" alt="triangle icon" width={40} height={40} />

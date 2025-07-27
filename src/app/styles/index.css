@@ -35,6 +35,14 @@
     display: none;
 }
 
+.background-video button#skip-intro {
+    z-index: 400;
+    bottom: 80px;
+    right: 80px;
+    position: absolute;
+    cursor: pointer;
+}
+
 /* login link */
 .login-link {
     color: #fff;
