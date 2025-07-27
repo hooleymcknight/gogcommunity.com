@@ -11,7 +11,8 @@
     background-size: cover;
 }
 
-.background-video.video-hidden video {
+.background-video.video-hidden video,
+.background-video.video-hidden button {
     display: none;
 }
 

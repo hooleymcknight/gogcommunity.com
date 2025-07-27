@@ -5,11 +5,23 @@ import { useState, useEffect } from "react";
 import Orbits from "./helpers/orbits";
 import Image from "next/image";
 import { useSession } from "./SessionProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function Home() {
     const session = useSession();
     const displayName = session?.user?.username;
+
+    const skipIntro = () => {
+        const mainMenu = document.querySelector('main');
+        mainMenu.classList.remove('menu-hidden');
+
+        const videoContainer = document.querySelector('.background-video');
+        videoContainer.querySelector('video').pause();
+        videoContainer.querySelector('video').style.opacity = 0;
+
+    }
 
     useEffect(() => {
         const mainMenu = document.querySelector('main');
@@ -18,13 +30,13 @@ export default function Home() {
         }
         else {
             sessionStorage.setItem('intro-animation-shown', 'true');
-            const video = document.querySelector('.background-video');
+            const videoContainer = document.querySelector('.background-video');
 
-            video.classList.remove('video-hidden');
-            video.querySelector('video').play();
+            videoContainer.classList.remove('video-hidden');
+            videoContainer.querySelector('video').play();
             setTimeout(() => {
                 mainMenu.classList.remove('menu-hidden');
-                video.querySelector('video').style.opacity = 0;
+                videoContainer.querySelector('video').style.opacity = 0;
             }, 6000);
         }
     }, []);
@@ -36,6 +48,7 @@ export default function Home() {
                     <source src="/gogcomm-tech-element_desktop.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
+                <button id="skip-intro" onClick={skipIntro}>Skip <FontAwesomeIcon icon={faChevronRight} /></button>
             </div>
             <div className="fixed w-full top-0 left-0 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
                 <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start menu-hidden">
