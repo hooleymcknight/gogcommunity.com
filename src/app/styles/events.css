@@ -1,4 +1,4 @@
-.main-container {
+.main-container.events {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -9,4 +9,11 @@
     background-image: url('/purple-spotlight.png');
     background-position: center center;
     background-size: cover;
+    padding-top: 160px;
+    padding-bottom: 0;
+    display: block;
+}
+
+.main-container.events .events-list {
+    height: 100%;
 }

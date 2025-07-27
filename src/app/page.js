@@ -11,7 +11,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
     const session = useSession();
-    const displayName = session?.user?.username;
+    const displayName = session?.sessionData?.user?.username;
 
     const skipIntro = () => {
         console.log('skipIntro')
@@ -30,7 +30,7 @@ export default function Home() {
             mainMenu.classList.remove('menu-hidden');
         }
         else {
-            // sessionStorage.setItem('intro-animation-shown', 'true');
+            sessionStorage.setItem('intro-animation-shown', 'true');
             const videoContainer = document.querySelector('.background-video');
 
             videoContainer.classList.remove('video-hidden');

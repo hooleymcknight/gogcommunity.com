@@ -7,6 +7,7 @@ import bcrypt from 'bcryptjs';
 const salt = bcrypt.genSaltSync(10);
 const db = new PrismaClient();
 
+/* new event */
 async function addEventDB(inputData) {
     let dt = `${inputData.date} ${inputData.time}`;
 
@@ -24,11 +25,31 @@ async function addEventDB(inputData) {
 
 export async function createNewEvent(data) {
     addEventDB(data)
+        .then(() => {
+            return true;
+        })
         .catch((e) => {
             console.error(e);
         });
 }
 
+/* list events */
+export async function collectEvents() {
+    let today = new Date();
+    const events = await db.events.findMany({
+        where: {
+            datetime: {
+                gte: today
+            }
+        },
+        orderBy: {
+            datetime: 'asc',
+        }
+    });
+    return events;
+}
+
+/* change pw */
 async function getUserData(newValue, currentPW) {
     const session = await getServerSession(options);
     const password = newValue;

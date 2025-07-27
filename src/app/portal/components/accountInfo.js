@@ -1,13 +1,10 @@
 'use client';
-import { useState } from 'react';
 import ChangePasswordButton from "./changePW";
 import { updateServerPassword } from "./updateServerData";
 import { useSession } from '@/app/SessionProvider';
 
 export default function AccountInfo({ session, onDataSend }) {
-    // const { session, updateSession } = useSession();
     const { updateSession } = useSession();
-    console.log(updateSession);
 
     return (
         <>

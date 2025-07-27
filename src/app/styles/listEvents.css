@@ -1,0 +1,99 @@
+.main-container.portal {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-image: url('/purple-spotlight.png');
+    background-position: center center;
+    background-size: cover;
+    padding-bottom: 0;
+}
+
+main.portal, main.events {
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+/* events list */
+.events-list {
+    overflow-y: scroll;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.event-listing {
+    display: grid;
+    grid-template-areas:
+        "name name"
+        "l-date l-time"
+        "date time"
+        "l-location l-location"
+        "location location"
+        "l-desc l-desc"
+        "desc desc"
+        "l-host l-author"
+        "host author";
+    padding: 10px 0;
+    border-bottom: 1px solid #fff;
+    column-gap: 24px;
+}
+.event-listing:last-of-type {
+    border-bottom: none;
+}
+
+.event-listing label {
+    font-size: 14px;
+}
+
+.event-listing p {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.event-listing h3 {
+    grid-area: name;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.event-listing .l-date {
+    grid-area: l-date;
+}
+.event-listing .date {
+    grid-area: date;
+}
+
+.event-listing .l-location {
+    grid-area: l-location;
+}
+.event-listing .location {
+    grid-area: location;
+}
+
+.event-listing .l-desc {
+    grid-area: l-desc;
+}
+.event-listing .desc {
+    grid-area: desc;
+}
+
+.event-listing .l-host {
+    grid-area: l-host;
+}
+.event-listing .host {
+    grid-area: host;
+}
+
+.event-listing .l-author {
+    grid-area: l-author;
+}
+.event-listing .author {
+    grid-area: author;
+}

@@ -1,4 +1,4 @@
-.main-container {
+.main-container.portal {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -12,11 +12,13 @@
     background-image: url('/purple-spotlight.png');
     background-position: center center;
     background-size: cover;
+    padding-bottom: 0;
 }
 
 main.portal {
     position: relative;
     width: 50%;
+    height: 100%;
 }
 
 button#changePW,
@@ -91,7 +93,26 @@ button#changePW.modal-btn:hover {
     border-color: #fff;
 }
 
+.acct-info-section h3 {
+    margin-bottom: 8px;
+}
+
 /* portal events */
+.events-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.events-header button {
+    border: 1px solid #fff;
+}
+.events-header button:hover {
+    border-color: #111;
+    color: #111;
+    background-color: #fff;
+}
 
 .add-event-modal {
     background: rgba(0, 0, 0, 0.5);

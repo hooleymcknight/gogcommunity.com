@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { createNewEvent } from "./updateServerData";
 import { ListEvents } from './listEvents';
 
-export default function EditEvents({ session, onDataSend }) {
+export default function EditEvents({ session }) {
     const [addingEvent, setAddingEvent] = useState(false);
 
     const newEventHandler = () => {
@@ -18,7 +18,11 @@ export default function EditEvents({ session, onDataSend }) {
             author: session.user.username,
         }
 
-        createNewEvent(responses);
+        let dbAdd = createNewEvent(responses);
+        if (dbAdd) {
+            // make it look like it's loading at least for an second
+            setAddingEvent(false);
+        }
     }
 
     const handleCloseModal = (e) => {
@@ -29,10 +33,12 @@ export default function EditEvents({ session, onDataSend }) {
 
     return (
         <>
-            <h2>Events</h2>
-            <button onClick={() => {setAddingEvent(true)}}>Add New Event</button>
+            <div className="events-header">
+                <h2>Events</h2>
+                <button onClick={() => {setAddingEvent(true)}}>Add New Event</button>
+            </div>
 
-            {/* <ListEvents /> */}
+            <ListEvents session={session} />
 
             { addingEvent ?
                 <div className="add-event-modal" onClick={(e) => {handleCloseModal(e)}}>
@@ -47,7 +53,7 @@ export default function EditEvents({ session, onDataSend }) {
                         <button id="submit-new-event" onClick={newEventHandler}>Submit</button>
                     </div>
                 </div>
-            :''}
+            : '' }
         </>
     );
 }

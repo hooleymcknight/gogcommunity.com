@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSession } from "../SessionProvider";
 
 import '../styles/portal.css';
+import '../styles/listEvents.css';
 import AccountInfo from "./components/accountInfo";
 import EditEvents from "./components/editEvents";
 
@@ -15,7 +16,7 @@ export default function Portal() {
     const session = useSession().sessionData;
 
     return (
-        <div className="main-container grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+        <div className="portal main-container grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
             <Link href="/" className="homepage-logo">
                 <Image src="/GoG-logo.svg" alt="GoG Community logo" width={180} height={38} />
             </Link>
