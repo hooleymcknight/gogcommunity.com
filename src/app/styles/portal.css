@@ -87,9 +87,16 @@ button#changePW.modal-btn:hover {
     cursor: pointer;
     display: block;
     border: 1px solid transparent;
+    transition: all 0.5s ease;
+    /* width: 100%;
+    text-align: left; */
 }
 
 .acct-tab.active-tab {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.acct-tab:hover {
     border-color: #fff;
 }
 

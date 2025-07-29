@@ -23,7 +23,7 @@ main.portal, main.events {
 
 /* events list */
 .events-list {
-    overflow-y: scroll;
+    overflow-y: auto;
     width: 100%;
     padding: 0 20px;
 }

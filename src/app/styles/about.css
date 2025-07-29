@@ -11,6 +11,10 @@
     background-size: cover;
 }
 
+.about.main-container main {
+    max-width: 800px;
+}
+
 #joinDiscord {
     display: flex;
     align-items: center;

@@ -1,5 +1,4 @@
 'use client';
-import Image from "next/image";
 import '../styles/events.css';
 import '../styles/listEvents.css';
 import Navbar from "../helpers/navbar";
