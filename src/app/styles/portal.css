@@ -121,7 +121,8 @@ button#changePW.modal-btn:hover {
     background-color: #fff;
 }
 
-.add-event-modal {
+.add-event-modal,
+.edit-event-modal {
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;

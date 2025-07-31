@@ -33,6 +33,40 @@ export async function createNewEvent(data) {
         });
 }
 
+/* edit/delete event */
+export async function editEventDB(eventID, newData) {
+    if (newData === 'delete') {
+        console.log('delete this event', eventID);
+        const deleteEvent = await db.events.delete({
+            where: {
+                id: Number(eventID)
+            }
+        });
+    }
+    else {
+        let dt = `${newData.date} ${newData.time}`;
+
+        const editedEvent = await db.events.update({
+            where: {
+                id: Number(eventID)
+            },
+            data: {
+                name: newData.name,
+                description: newData.description,
+                datetime: new Date(dt).toISOString(),
+                location: newData.location,
+                host: newData.host,
+            }
+        })
+        .then(() => {
+            return true;
+        })
+        .catch((e) => {
+            console.error(e);
+        });
+    }
+}
+
 /* list events */
 export async function collectEvents() {
     let today = new Date();

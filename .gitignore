@@ -45,3 +45,5 @@ next-env.d.ts
 
 *.png
 .mp4
+
+package-lock.json

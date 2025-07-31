@@ -1,10 +1,27 @@
 'use client';
 import { useState } from 'react';
-import { createNewEvent } from "./updateServerData";
+import { createNewEvent, editEventDB } from "./updateServerData";
 import { ListEvents } from './listEvents';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+
+const dtToDateEdit = (dt) => {
+    dt = typeof(dt) == 'string' ? new Date(dt) : dt;
+    return dt.toLocaleDateString('en-CA', {month: '2-digit', day: 'numeric', year: 'numeric'});
+}
+const dtToTimeEdit = (dt) => {
+    dt = typeof(dt) == 'string' ? new Date(dt) : dt;
+    return dt.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit', hour12: false});
+}
 
 export default function EditEvents({ session }) {
     const [addingEvent, setAddingEvent] = useState(false);
+    const [editingEvent, setEditingEvent] = useState(false);
+    const [renderKey, setRenderKey] = useState(0);
+
+    const forceChildRerender = () => {
+        setRenderKey(prevKey => prevKey + 1);
+    };
 
     const newEventHandler = () => {
         const form = document.querySelector('.add-event-modal');
@@ -21,13 +38,46 @@ export default function EditEvents({ session }) {
         let dbAdd = createNewEvent(responses);
         if (dbAdd) {
             // make it look like it's loading at least for an second
+            forceChildRerender();
             setAddingEvent(false);
+        }
+    }
+
+    const editEventHandler = (e) => {
+        const eventID = e.target.closest('[data-event-id]').dataset.eventId;
+        
+        const form = document.querySelector('.edit-event-modal');
+        let newEventData = {
+            name: form.querySelector('#name').value,
+            description: form.querySelector('#description').value || null,
+            date: form.querySelector('#date').value,
+            time: form.querySelector('#time').value,
+            location: form.querySelector('#location').value,
+            host: form.querySelector('#host').value || null,
+        }
+        
+        let edited = editEventDB(eventID, newEventData);
+        if (edited) {
+            forceChildRerender();
+            setEditingEvent(false);
+        }
+    }
+
+    const deleteEventHandler = (e) => {
+        const eventID = e.target.closest('[data-event-id]').dataset.eventId;
+        let adminConfirmation = confirm("Are you sure you want to delete this event?");
+        if (adminConfirmation) {
+            editEventDB(eventID, 'delete');
+            // pretend to load for a second
+            forceChildRerender();
+            setEditingEvent(false);
         }
     }
 
     const handleCloseModal = (e) => {
         if (!e.target.closest('.ae-modal-inner')) {
             setAddingEvent(false);
+            setEditingEvent(false);
         }
     }
 
@@ -38,7 +88,7 @@ export default function EditEvents({ session }) {
                 <button onClick={() => {setAddingEvent(true)}}>Add New Event</button>
             </div>
 
-            <ListEvents session={session} />
+            <ListEvents key={renderKey} session={session} onEdit={(data) => { setEditingEvent(data)}} />
 
             { addingEvent ?
                 <div className="add-event-modal" onClick={(e) => {handleCloseModal(e)}}>
@@ -51,6 +101,24 @@ export default function EditEvents({ session }) {
                         <input id="location" type="text" placeholder="location"></input>
                         <input id="host" type="text" placeholder="host"></input>
                         <button id="submit-new-event" onClick={newEventHandler}>Submit</button>
+                    </div>
+                </div>
+            : '' }
+
+            { editingEvent ?
+                <div className="edit-event-modal" onClick={(e) => {handleCloseModal(e)}} data-event-id={editingEvent.id}>
+                    <div className="ae-modal-inner">
+                        <button onClick={(e) => {deleteEventHandler(e)}}>
+                            <FontAwesomeIcon icon={faTrashCan} />
+                        </button>
+                        <h2>Edit Event</h2>
+                        <input id="name" type="text" placeholder="name" defaultValue={editingEvent.name}></input>
+                        <input id="description" type="text" placeholder="description" defaultValue={editingEvent.description}></input>
+                        <input id="date" type="date" placeholder="date" defaultValue={dtToDateEdit(editingEvent.datetime)}></input>
+                        <input id="time" type="time" placeholder="time" defaultValue={dtToTimeEdit(editingEvent.datetime)}></input>
+                        <input id="location" type="text" placeholder="location" defaultValue={editingEvent.location}></input>
+                        <input id="host" type="text" placeholder="host" defaultValue={editingEvent.host}></input>
+                        <button id="submit-event-edits" onClick={(e) => {editEventHandler(e)}}>Submit Edits</button>
                     </div>
                 </div>
             : '' }

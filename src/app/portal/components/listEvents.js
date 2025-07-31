@@ -1,20 +1,29 @@
 import { useEffect, useState } from 'react';
 import { useSession } from '@/app/SessionProvider';
 import { collectEvents } from '../components/updateServerData';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 const dtToDate = (dt) => {
+    dt = typeof(dt) == 'string' ? new Date(dt) : dt;
     return dt.toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'});
 }
-
 const dtToTime = (dt) => {
+    dt = typeof(dt) == 'string' ? new Date(dt) : dt;
     return dt.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit', hour12: true, timeZoneName: 'short'});
 }
 
-export const ListEvents = ({ session }) => {
+export const ListEvents = ({ session, onEdit }) => {
     const [events, setEvents] = useState([]);
     const { updateSession } = useSession();
     const sessionData = useSession().sessionData;
     const isAdmin = sessionData?.user?.type;
+
+    const editEventHandler = (e) => {
+        const eventElement = e.target.closest('.event-listing');
+        let eventData = JSON.parse(eventElement.dataset.json);
+        onEdit(eventData);
+    }
 
     useEffect(() => {
         async function fetchEvents() {
@@ -29,8 +38,15 @@ export const ListEvents = ({ session }) => {
     return (
         <div className="events-list">
             {events.map((x, index) =>
-                <div className="event-listing" key={index}>
+                <div className="event-listing" key={index} data-event-id={x.id} data-json={JSON.stringify(x)} >
                     <h3>{x.name}</h3>
+                    { isAdmin ? 
+                        <>
+                            <button onClick={(e) => {editEventHandler(e)}}>
+                                <FontAwesomeIcon icon={faPencil} />
+                            </button>
+                        </>
+                    :''}
                     <label className="l-date">Date</label>
                     <p className="date">{dtToDate(x.datetime)}</p>
                     <label className="l-time">Time</label>

@@ -43,9 +43,16 @@ main.portal, main.events {
     padding: 10px 0;
     border-bottom: 1px solid #fff;
     column-gap: 24px;
+    position: relative;
 }
 .event-listing:last-of-type {
     border-bottom: none;
+}
+
+.event-listing > button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 .event-listing label {
@@ -61,6 +68,7 @@ main.portal, main.events {
     grid-area: name;
     margin-bottom: 10px;
     font-weight: bold;
+    margin-right: 60px;
 }
 
 .event-listing .l-date {
