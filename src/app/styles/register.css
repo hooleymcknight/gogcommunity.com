@@ -1,0 +1,81 @@
+.main-container.register {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-image: url('/purple-spotlight.png');
+    background-position: center center;
+    background-size: cover;
+    padding-top: 160px;
+    padding-bottom: 0;
+    display: block;
+}
+
+main.portal {
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+form#register-form {
+    display: grid;
+    grid-template-areas: 
+        "username username"
+        "email email"
+        "first last"
+        "password password"
+        "register blank"
+    ;
+    grid-column-gap: 36px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.input-group input {
+    background-color: #fff;
+    color: #111;
+    padding: 5px 8px;
+    max-height: 30vh;
+}
+
+button#register {
+    margin-top: 18px;
+    background-color: #fff;
+    color: #111;
+    border: 1px solid #fff;
+    grid-area: register;
+    width: fit-content;
+    width: -moz-fit-content;
+}
+button#register:hover {
+    background-color: #111;
+    color: #fff;
+}
+
+.username {
+    grid-area: username;
+}
+.email {
+    grid-area: email;
+}
+.fname {
+    grid-area: first;
+}
+.lname {
+    grid-area: last;
+}
+.password {
+    grid-area: password;
+}

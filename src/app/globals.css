@@ -161,3 +161,16 @@ button {
     padding: 8px 20px;
     cursor: pointer;
 }
+
+a.inline,
+.inline a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: all 0.2s ease;
+}
+
+a.inline:hover,
+.inline a:hover {
+    color: #dadada;
+    text-underline-offset: 3px;
+}

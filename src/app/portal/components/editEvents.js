@@ -81,6 +81,13 @@ export default function EditEvents({ session }) {
         }
     }
 
+    const handleKeyUp = (e) => {
+        const inputGroup = e.target.closest('.changing-pw');
+        if (e.key === 'Enter') {
+            inputGroup.querySelector('button').click();
+        }
+    }
+
     return (
         <>
             <div className="events-header">
@@ -94,12 +101,12 @@ export default function EditEvents({ session }) {
                 <div className="add-event-modal" onClick={(e) => {handleCloseModal(e)}}>
                     <div className="ae-modal-inner">
                         <h2>Add New Event</h2>
-                        <input id="name" type="text" placeholder="name"></input>
-                        <input id="description" type="text" placeholder="description"></input>
-                        <input id="date" type="date" placeholder="date"></input>
-                        <input id="time" type="time" placeholder="time"></input>
-                        <input id="location" type="text" placeholder="location"></input>
-                        <input id="host" type="text" placeholder="host"></input>
+                        <input id="name" type="text" placeholder="name" onKeyUp={(e) => {handleKeyUp(e)}} ></input>
+                        <input id="description" type="text" placeholder="description" onKeyUp={(e) => {handleKeyUp(e)}} ></input>
+                        <input id="date" type="date" placeholder="date" onKeyUp={(e) => {handleKeyUp(e)}} ></input>
+                        <input id="time" type="time" placeholder="time" onKeyUp={(e) => {handleKeyUp(e)}} ></input>
+                        <input id="location" type="text" placeholder="location" onKeyUp={(e) => {handleKeyUp(e)}} ></input>
+                        <input id="host" type="text" placeholder="host" onKeyUp={(e) => {handleKeyUp(e)}} ></input>
                         <button id="submit-new-event" onClick={newEventHandler}>Submit</button>
                     </div>
                 </div>
@@ -112,12 +119,12 @@ export default function EditEvents({ session }) {
                             <FontAwesomeIcon icon={faTrashCan} />
                         </button>
                         <h2>Edit Event</h2>
-                        <input id="name" type="text" placeholder="name" defaultValue={editingEvent.name}></input>
-                        <input id="description" type="text" placeholder="description" defaultValue={editingEvent.description}></input>
-                        <input id="date" type="date" placeholder="date" defaultValue={dtToDateEdit(editingEvent.datetime)}></input>
-                        <input id="time" type="time" placeholder="time" defaultValue={dtToTimeEdit(editingEvent.datetime)}></input>
-                        <input id="location" type="text" placeholder="location" defaultValue={editingEvent.location}></input>
-                        <input id="host" type="text" placeholder="host" defaultValue={editingEvent.host}></input>
+                        <input id="name" type="text" placeholder="name" defaultValue={editingEvent.name} onKeyUp={(e) => {handleKeyUp(e)}} ></input>
+                        <input id="description" type="text" placeholder="description" defaultValue={editingEvent.description} onKeyUp={(e) => {handleKeyUp(e)}} ></input>
+                        <input id="date" type="date" placeholder="date" defaultValue={dtToDateEdit(editingEvent.datetime)} onKeyUp={(e) => {handleKeyUp(e)}} ></input>
+                        <input id="time" type="time" placeholder="time" defaultValue={dtToTimeEdit(editingEvent.datetime)} onKeyUp={(e) => {handleKeyUp(e)}} ></input>
+                        <input id="location" type="text" placeholder="location" defaultValue={editingEvent.location} onKeyUp={(e) => {handleKeyUp(e)}} ></input>
+                        <input id="host" type="text" placeholder="host" defaultValue={editingEvent.host} onKeyUp={(e) => {handleKeyUp(e)}} ></input>
                         <button id="submit-event-edits" onClick={(e) => {editEventHandler(e)}}>Submit Edits</button>
                     </div>
                 </div>

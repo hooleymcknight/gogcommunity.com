@@ -2,7 +2,7 @@
 import Link from "next/link";
 import './styles/index.css';
 import { useState, useEffect } from "react";
-import Orbits from "./helpers/orbits";
+import Orbits from "./components/orbits";
 import Image from "next/image";
 import { useSession } from "./SessionProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -55,10 +55,18 @@ export default function Home() {
             <div className="main-container fixed w-full top-0 left-0 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 menu-hidden">
                 <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
 
-                    <Link href="/portal" className="login-link fireteam-tag">
-                        <Image src="/fireteam/triangle.png" alt="triangle icon" width={40} height={40} />
-                        {displayName ? displayName : 'Xx_Log-In-Here_xX'}
-                    </Link>
+                    <div className="fireteam">
+                        <Link href="/portal" className="login-link fireteam-tag">
+                            <Image src="/fireteam/triangle.png" alt="triangle icon" width={40} height={40} />
+                            {displayName ? displayName : 'Xx_Log-In-Here_xX'}
+                        </Link>
+                        { displayName ? '' : 
+                            <Link href="/register" className="login-link fireteam-tag">
+                                <Image src="/fireteam/plus.png" alt="plus icon" width={40} height={40} />
+                                REGISTER
+                            </Link>
+                        }
+                    </div>
 
                     <Orbits />
                 </main>

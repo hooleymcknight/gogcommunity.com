@@ -21,6 +21,25 @@ main.portal, main.events {
     height: 100%;
 }
 
+.no-events {
+    margin: 20px auto 0;
+}
+
+.no-events h3 {
+    margin-bottom: 18px;
+}
+
+.no-events a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: all 0.2s ease;
+}
+
+.no-events a:hover {
+    color: #dadada;
+    text-underline-offset: 3px;
+}
+
 /* events list */
 .events-list {
     overflow-y: auto;

@@ -1,6 +1,6 @@
 'use client';
 import '../styles/about.css';
-import Navbar from "../helpers/navbar";
+import Navbar from "../components/navbar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 

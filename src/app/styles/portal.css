@@ -157,3 +157,38 @@ button#changePW.modal-btn:hover {
     background-color: #fff;
     color: #111;
 }
+
+.pw-change-inline {
+    display: grid;
+    grid-template-areas: 
+        "current-pw current-pw"
+        "new-pw-1 new-pw-2"
+        "button blank"
+    ;
+}
+
+.pw-change-inline .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.pw-change-inline input {
+    background: #dadada;
+    color: #111;
+    margin: 4px 12px 4px 0;
+    padding: 4px 8px;
+}
+
+.pw-change-inline .input-group.current-pw {
+    grid-area: current-pw;
+}
+.pw-change-inline .input-group.new-pw-1 {
+    grid-area: new-pw-1;
+}
+.pw-change-inline .input-group.new-pw-2 {
+    grid-area: new-pw-2;
+}
+.pw-change-inline button {
+    grid-area: button;
+}

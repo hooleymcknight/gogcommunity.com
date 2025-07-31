@@ -1,7 +1,7 @@
 'use client';
 import '../styles/events.css';
 import '../styles/listEvents.css';
-import Navbar from "../helpers/navbar";
+import Navbar from "../components/navbar";
 import { ListEvents } from "../portal/components/listEvents";
 
 export default function Events({ session }) {

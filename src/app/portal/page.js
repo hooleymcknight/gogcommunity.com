@@ -42,7 +42,6 @@ export default function Portal() {
                 {
                     activeTab === 'Events' ? <EditEvents session={session} /> : ''
                 }
-                
 
             </main>
         </div>

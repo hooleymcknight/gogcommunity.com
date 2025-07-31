@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 
-
 export default function ChangePasswordButton({ required, onDataSend, updatePwChangeRequired }) {
     const [changingPassword, setChangingPassword] = useState(false);
 
@@ -25,6 +24,7 @@ export default function ChangePasswordButton({ required, onDataSend, updatePwCha
                 }
                 else {
                     console.log('try again');
+                    window.alert('Please check passwords and try again.');
                     /**
                      * insert error messaging here
                      */
@@ -32,6 +32,7 @@ export default function ChangePasswordButton({ required, onDataSend, updatePwCha
             }
             else {
                 console.log('get ya passwords matching');
+                window.alert('Please make sure your new passwords match and try again.');
                 /**
                  * insert error messaging here
                  */
@@ -42,16 +43,23 @@ export default function ChangePasswordButton({ required, onDataSend, updatePwCha
         }
     };
 
+    const handleKeyUp = (e) => {
+        const inputGroup = e.target.closest('.changing-pw');
+        if (e.key === 'Enter') {
+            inputGroup.querySelector('button').click();
+        }
+    }
+
     return (
         <>
             { required ?
-                <div className="change-pw-modal-container">
+                <div className="change-pw-modal-container changing-pw">
                     <div className="change-pw-modal">
                         <h2>Please reset your password immediately.</h2>
                         { changingPassword ?
                             <>
-                                <input id="new-pw-1" type="password" placeholder="new password" />
-                                <input id="new-pw-2" type="password" placeholder="repeat it" />
+                                <input id="new-pw-1" required={true} type="password" placeholder="new password" onKeyUp={(e) => {handleKeyUp(e)}} />
+                                <input id="new-pw-2" required={true} type="password" placeholder="repeat it" onKeyUp={(e) => {handleKeyUp(e)}} />
                             </>
                             :
                             ''
@@ -60,20 +68,28 @@ export default function ChangePasswordButton({ required, onDataSend, updatePwCha
                     </div>
                 </div>
             :
-                <>
+                <div className="changing-pw pw-change-inline">
                     { changingPassword ?
                         <>
-                            <input id="current-pw" type="password" placeholder="current password" />
-                            <input id="new-pw-1" type="password" placeholder="new password" />
-                            <input id="new-pw-2" type="password" placeholder="repeat new password" />
+                            <div className="input-group current-pw">
+                                <label>Current password</label>
+                                <input id="current-pw" required={true} type="password" placeholder="current password" onKeyUp={(e) => {handleKeyUp(e)}} />
+                            </div>
+                            <div className="input-group new-pw-1">
+                                <label>New password</label>
+                                <input id="new-pw-1" required={true} type="password" placeholder="new password" onKeyUp={(e) => {handleKeyUp(e)}} />
+                            </div>
+                            <div className="input-group new-pw-2">
+                                <label>New password again</label>
+                                <input id="new-pw-2" required={true} type="password" placeholder="repeat new password" onKeyUp={(e) => {handleKeyUp(e)}} />
+                            </div>
                         </>
                         :
                         ''
                     }
                     <button id="changePW" onClick={(e) => {handleClick(e)}}>Change Password</button>
-                </>
+                </div>
             }
-            
         </>
     );
 }

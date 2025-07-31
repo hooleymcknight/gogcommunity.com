@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import '../styles/about.css';
-import Wisp from "../helpers/wisp";
+import Wisp from "../components/wisp";
 
 let wispInit = false;
 
