@@ -2,7 +2,7 @@
 import '../styles/contact.css';
 import Navbar from "../components/navbar";
 import { useForm } from 'react-hook-form';
-import { sendEmail } from '../api/sendEmail';
+import { sendEmail } from '@/app/api/sendEmail';
 
 export default function Contact() {
     const { register, handleSubmit } = useForm();
