@@ -1,8 +1,8 @@
 'use client';
 import ChangePasswordButton from "./changePW";
-import { updateServerPassword } from "./updateServerData";
+import { updateServerPassword } from "./server/updateAccount";
 import { useSession } from '@/app/SessionProvider';
-import Link from "next/link";
+import Link from "next/link";``
 
 export default function AccountInfo({ session, onDataSend }) {
     const { updateSession } = useSession();

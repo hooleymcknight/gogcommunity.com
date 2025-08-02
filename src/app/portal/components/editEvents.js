@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { createNewEvent, editEventDB } from "./updateServerData";
+import { createNewEvent, editEventDB } from "./server/updateEvents";
 import { ListEvents } from './listEvents';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';

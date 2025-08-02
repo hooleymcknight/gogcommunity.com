@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useSession } from '@/app/SessionProvider';
-import { collectEvents } from '../components/updateServerData';
+import { collectEvents } from '../components/server/updateEvents';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 

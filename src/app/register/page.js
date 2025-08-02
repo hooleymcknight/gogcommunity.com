@@ -2,7 +2,7 @@
 import Navbar from "../components/navbar";
 import { useSession } from "../SessionProvider";
 import { useRouter } from "next/navigation";
-import { registerUser } from "../portal/components/updateServerData";
+import { registerUser } from "./components/server/registerUser";
 
 import '../styles/register.css';
 
