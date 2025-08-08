@@ -40,16 +40,17 @@ export default function Portal() {
                     }
                 </div>
 
-                {
-                    activeTab === 'Account' ? <AccountInfo session={session} /> : ''
-                }
-                {
-                    activeTab === 'Events' ? <EditEvents session={session} /> : ''
-                }
-                {
-                    activeTab === 'Messages' ? <Messages session={session} /> : ''
-                }
-
+                <div className="acct-info-group">
+                    {
+                        activeTab === 'Account' ? <AccountInfo session={session} /> : ''
+                    }
+                    {
+                        activeTab === 'Events' ? <EditEvents session={session} /> : ''
+                    }
+                    {
+                        activeTab === 'Messages' ? <Messages session={session} /> : ''
+                    }
+                </div>
             </main>
         </div>
     );

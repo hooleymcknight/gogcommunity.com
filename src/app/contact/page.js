@@ -2,16 +2,20 @@
 import '../styles/contact.css';
 import Navbar from "../components/navbar";
 import { useForm } from 'react-hook-form';
-import { sendEmail } from '@/app/api/sendEmail';
+// import { sendEmail } from '@/app/api/sendEmail';
+import { insertNewMessage } from '../portal/components/server/updateMessages';
 
 export default function Contact() {
     const { register, handleSubmit } = useForm();
 
-    const onSubmit = async (data) => {
-        let res = await sendEmail(data);
-
+    const onSubmit = (data) => {
+        let res = insertNewMessage(data);
         if (res) {
-            document.querySelector('#contact-form').reset();
+            // act like your loading pls
+            setTimeout(() => {
+                window.alert('Message successfully sent!');
+                document.querySelector('#contact-form').reset();
+            }, 500);
         }
     }
 

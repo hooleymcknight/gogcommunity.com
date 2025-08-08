@@ -100,6 +100,10 @@ button#changePW.modal-btn:hover {
     border-color: #fff;
 }
 
+.acct-info-section {
+    margin-bottom: 24px;
+}
+
 .acct-info-section h3 {
     margin-bottom: 8px;
 }
@@ -191,4 +195,171 @@ button#changePW.modal-btn:hover {
 }
 .pw-change-inline button {
     grid-area: button;
+}
+
+/* messages */
+.messages {
+    width: 100%;
+    overflow-y: auto;
+}
+
+.messages > h2 {
+    margin-bottom: 24px;
+}
+
+.message-listing {
+    width: 100%;
+    display: grid;
+    grid-template-areas: 
+        "name name blank date"
+        "email email email blank2"
+        "read read replied replied"
+    ;
+    margin-bottom: 18px;
+    padding: 16px 8px;
+    border-bottom: 1px solid #fff;
+}
+.message-listing:not(:last-child) {
+    border-bottom: 1px solid #fff;
+}
+
+.message-listing h3 {
+    grid-area: name;
+    text-align: left;
+}
+.message-listing .email {
+    grid-area: email;
+    text-align: left;
+    margin-bottom: 10px;
+}
+.message-listing .date {
+    grid-area: date;
+    text-align: right;
+}
+.message-listing .read {
+    grid-area: read;
+    text-align: left;
+}
+.message-listing .replied {
+    grid-area: replied;
+    text-align: right;
+}
+
+/* active message modal */
+.active-message {
+    display: grid;
+    grid-template-areas: 
+        "from from from close"
+        "date date date date"
+        "message message message message"
+        "message message message message"
+        "mark-as-unread mark-as-replied blank trash"
+    ;
+    grid-template-rows: min-content min-content auto auto min-content;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+    background: #ededed;
+    color: #111;
+    padding: 24px;
+}
+
+.active-message h3 {
+    grid-area: from;
+    margin-bottom: 8px;
+}
+.active-message .date {
+    grid-area: date;
+}
+.active-message .trash {
+    grid-area: trash;
+}
+.active-message .close {
+    grid-area: close;
+    margin-top: -20px;
+    margin-right: -20px;
+    font-size: 24px;
+    height: fit-content;
+    width: fit-content;
+    margin-left: auto;
+}
+.active-message .message {
+    grid-area: message;
+    padding: 24px 0;
+}
+.active-message .mark-as-unread {
+    grid-area: mark-as-unread;
+    width: fit-content;
+    width: -moz-fit-content;
+}
+.active-message .mark-as-replied {
+    grid-area: mark-as-replied;
+    width: fit-content;
+    width: -moz-fit-content;
+}
+.active-message .mark-as-replied input {
+    cursor: pointer;
+    pointer-events: none;
+    margin-left: 8px;
+}
+.active-message .mark-as-unread:hover,
+.active-message .mark-as-replied:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+    a.sign-out {
+        top: 40px;
+        right: 40px;
+    }
+    .main-container.portal {
+        padding-top: 140px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .acct-info-section {
+        width: 100%;
+    }
+    .main-container.portal main.portal {
+        padding-bottom: 40px;
+        margin-top: 70px;
+    }
+
+    .acct-info-group {
+        overflow-y: auto;
+        padding-bottom: 60px;
+        max-width: 100%;
+    }
+
+    .portal-sidebar {
+        top: 140px;
+        left: 0;
+        width: 100%;
+        position: fixed;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .pw-change-inline {
+        grid-template-areas:
+            "current-pw"
+            "new-pw-1"
+            "new-pw-2"
+            "button"
+        ;
+    }
+
+    .active-message {
+        width: 100%;
+        height: 60%;
+    }
+    .mark-as-replied {
+        display: flex;
+    }
 }

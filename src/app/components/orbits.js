@@ -60,20 +60,20 @@ export default function Orbits() {
             height={38}
             priority
         />
-        <div className="orbit thin-orbit" style={{ "--full-orbit": "190px" }}></div>
+        <div id="orbit-1" className="orbit thin-orbit"></div>
 
-        <div className="orbit thick-orbit" style={{ "--full-orbit": "200px" }}></div>
+        <div id="orbit-2" className="orbit thick-orbit"></div>
 
-        <div className="orbit dotted-orbit" style={{ "--full-orbit": "290px" }}>
+        <div id="orbit-3" className="orbit dotted-orbit">
             <div className="mini-node" style={{ "--rotation": "15deg" }}></div>
         </div>
 
-        <div className="orbit thin-orbit" style={{ "--full-orbit": "320px" }}>
+        <div id="orbit-4" className="orbit thin-orbit">
             <div className="mini-node" style={{ "--rotation": "208deg" }}></div>
         </div>
 
         {/* MAIN ORBIT!! */}
-        <div className="orbit main-orbit" style={{ "--full-orbit": "530px" }}>
+        <div id="orbit-main" className="orbit main-orbit">
             <Link href="/events" className="node active" style={{ transform: "rotate(30deg)", }} data-node="1" onMouseEnter={(e) => {handleNodeHover(e)}}></Link>
             <Link href="/contact" className="node" style={{ transform: "rotate(150deg)", }} data-node="2" onMouseEnter={(e) => {handleNodeHover(e)}}></Link>
             <Link href="/about" className="node" style={{ transform: "rotate(270deg)", }} data-node="3" onMouseEnter={(e) => {handleNodeHover(e)}}></Link>
@@ -83,14 +83,14 @@ export default function Orbits() {
             <Link href="/about" className="orbit-menu-item bottom-item" data-node="3" onMouseEnter={(e) => {handleNodeTextHover(e)}}>About</Link>
         </div>
 
-        <div className="orbit dotted-orbit" style={{ "--full-orbit": "900px" }}></div>
+        <div id="orbit-5" className="orbit dotted-orbit"></div>
 
-        <div className="orbit thin-orbit" style={{ "--full-orbit": "930px" }}>
+        <div id="orbit-6" className="orbit thin-orbit">
             <div className="mini-node" style={{ "--rotation": "108deg" }}></div>
             <div className="mini-node" style={{ "--rotation": "320deg" }}></div>
         </div>
 
-        <div className="orbit dotted-orbit" style={{ "--full-orbit": "990px" }}></div>
+        <div id="orbit-7" className="orbit dotted-orbit"></div>
     </div>
   );
 }

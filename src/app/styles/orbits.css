@@ -159,3 +159,94 @@
     -moz-animation-timing-function: ease-in;
     -webkit-animation-timing-function: ease-in;
 }
+
+/* orbit sizes */
+#orbit-1 { --full-orbit: 190px; }
+#orbit-2 { --full-orbit: 200px; }
+#orbit-3 { --full-orbit: 290px; }
+#orbit-4 { --full-orbit: 320px; }
+#orbit-main { --full-orbit: 530px; }
+#orbit-5 { --full-orbit: 900px; }
+#orbit-6 { --full-orbit: 930px; }
+#orbit-7 { --full-orbit: 990px; }
+
+@media (max-width: 767px) {
+    #orbit-1 { --full-orbit: 190px; }
+    #orbit-2 { --full-orbit: 200px; }
+    #orbit-3 { --full-orbit: 390px; }
+    #orbit-4 { --full-orbit: 410px; }
+    #orbit-main { --full-orbit: 260px; }
+    #orbit-5 { --full-orbit: 500px; }
+    #orbit-6 { --full-orbit: 530px; }
+    #orbit-7 { --full-orbit: 590px; }
+
+    .orbit-menu-item {
+        border: 1px solid #fff;
+    }
+    .orbit-menu-item:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(25deg, rgba(59, 19, 72, 1), rgba(0, 0, 0, 1));
+        opacity: 0.8;
+        transition: all 0.5s ease;
+        z-index: -1;
+    }
+
+    .node.active {
+        width: 15px;
+        height: 15px;
+        outline-offset: 2px;
+
+        position: absolute;
+        top: calc(50% - 8px);
+        left: -10px;
+        transform-origin: calc(calc(var(--full-orbit) / 2) + 6px);
+        transition: transform 0.6s linear, all 0.3s linear;
+    }
+    .orbit-menu-item {
+        padding: 10px 25px;
+    }
+    .orbit-menu-item.active {
+        font-size: 24px;
+    }
+
+    .orbit-menu-item:focus,
+    .orbit-menu-item:active {
+        text-decoration: underline;
+    }
+    .orbit-menu-item.left-item {
+        left: 65%;
+        top: 18%;
+    }
+    .orbit-menu-item.right-item {
+        right: 70%;
+        top: calc(100% + 40px);
+    }
+    .orbit-menu-item.bottom-item {
+        bottom: 115px;
+        left: 20%;
+    }
+    .node[href*="events"] {
+        transform: rotate(100deg) !important;
+    }
+    .node[href*="contact"] {
+        transform: rotate(250deg) !important;
+    }
+    .node[href*="about"] {
+        transform: rotate(345deg) !important;
+    }
+    
+    /* fireteam */
+    .fireteam {
+        top: 30px;
+        right: 30px;
+    }
+
+    .main-container {
+        padding: 32px 0 20px;
+    }
+}

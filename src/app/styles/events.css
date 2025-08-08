@@ -17,3 +17,11 @@
 .main-container.events .events-list {
     height: 100%;
 }
+
+@media (max-width: 767px) {
+    .main-container.events {
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
+    }
+}

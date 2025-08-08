@@ -14,8 +14,37 @@ export async function collectMessages() {
     return messages;
 }
 
-async function addMessageDB(inputData) {
+export async function markAsRead(message, value) {
+    const markedRead = await db.messages.update({
+        where: {
+            id: message.id,
+        },
+        data: {
+            read: value,
+        }
+    });
+}
 
+export async function markAsReplied(message, value) {
+    const markedReplied = await db.messages.update({
+        where: {
+            id: message.id,
+        },
+        data: {
+            replied: value,
+        }
+    });
+}
+
+export async function deleteMessage(message) {
+    const deletedMessage = await db.messages.delete({
+        where: {
+            id: message.id,
+        }
+    });
+}
+
+async function addMessageDB(inputData) {
     const insertMessageData = await db.messages.create({
         data: {
             name: inputData.name,

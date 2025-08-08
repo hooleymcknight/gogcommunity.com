@@ -124,3 +124,18 @@ main.portal, main.events {
 .event-listing .author {
     grid-area: author;
 }
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+    main.portal, main.events {
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+    }
+    main.portal h1,
+    main.events h1 {
+        text-align: left;
+        width: 100%;
+    }
+}

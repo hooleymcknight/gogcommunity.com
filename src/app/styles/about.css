@@ -32,6 +32,26 @@
     border-color: #414ab4;
 }
 
+/* MOBILE */
+
+@media (max-width: 767px) {
+    .main-container.about {
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
+    }
+
+    .main-container.about main {
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+    }
+    .main-container.about main h1 {
+        text-align: left;
+        width: 100%;
+    }
+}
+
 /* specifics */
 
 .eye-container {

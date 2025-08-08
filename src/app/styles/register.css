@@ -79,3 +79,22 @@ button#register:hover {
 .password {
     grid-area: password;
 }
+
+@media (max-width: 767px) {
+    main.register {
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    form#register-form {
+        grid-template-areas:
+            "username"
+            "email"
+            "first"
+            "last"
+            "password"
+            "register"
+        ;
+        margin-top: 0;
+    }
+}
