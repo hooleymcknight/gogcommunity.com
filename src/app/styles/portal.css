@@ -358,6 +358,19 @@ button#changePW.modal-btn:hover {
     .active-message {
         width: 100%;
         height: 60%;
+        display: grid;
+        grid-template-areas: 
+            "blank close"
+            "from from"
+            "date date"
+            "message message"
+            "message message"
+            "mark-as-unread mark-as-replied"
+            "blank trash"
+        ;
+    }
+    .active-message h3 span.email {
+        font-size: 4vw;
     }
     .mark-as-replied {
         display: flex;

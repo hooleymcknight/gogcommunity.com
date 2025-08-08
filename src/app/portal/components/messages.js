@@ -95,7 +95,7 @@ export default function Messages({ session }) {
             </div>
             { activeMessage ?
                 <div className="active-message" data-message={JSON.stringify(activeMessage)}>
-                    <h3>From:&nbsp;&nbsp;{activeMessage.name} ({activeMessage.email})</h3>
+                    <h3>From:&nbsp;&nbsp;{activeMessage.name} <span className="email">({activeMessage.email})</span></h3>
                     <p className="date">{`${dtToDate(activeMessage.datetime)} ${dtToTime(activeMessage.datetime)}`}</p>
 
                     <p className="message">
