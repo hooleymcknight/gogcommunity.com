@@ -14,7 +14,7 @@ async function validateNewUser(data) {
     });
 
     // if duplicate email, we won't even get here.
-    const duplicateUN = await db.users.findMany({
+    const duplicateUN = await db.users.findFirst({
         where: {
             username: data.username,
         }
