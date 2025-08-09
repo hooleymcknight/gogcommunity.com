@@ -1,17 +1,7 @@
 .main-container.portal {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background-image: url('/purple-spotlight.png');
-    background-position: center center;
-    background-size: cover;
     padding-bottom: 0;
 }
 

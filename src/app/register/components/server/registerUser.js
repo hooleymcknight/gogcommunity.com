@@ -14,11 +14,16 @@ async function validateNewUser(data) {
     });
 
     // if duplicate email, we won't even get here.
-    const duplicateUN = await db.users.findMany({
+    const duplicateUN = await db.users.findFirst({
         where: {
             username: data.username,
         }
     });
+    console.log('find first email:')
+    console.log(duplicateEmail)
+
+    console.log('find first un:')
+    console.log(duplicateUN)
 
     if (duplicateEmail && duplicateUN) {
         return 'This username and email have already been used. Please try with different user info.';

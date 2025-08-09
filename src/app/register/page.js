@@ -25,22 +25,28 @@ export default function register() {
             lname: form.querySelector('#lname').value,
         }
 
-        let res = await registerUser(responses);
-        if (res == true) {
-            window.alert('Success! You will now be redirected to sign in.')
-            router.push('/portal');
-        }
-        else {
-            window.alert(res);
-        }
+        let res = await registerUser(responses)
+        .then((response) => {
+            if (response) {
+                window.alert(response);
+            }
+            else {
+                window.alert('Success! You will now be redirected to sign in.')
+                router.push('/portal');
+            }
+        })
+        .catch((e) => {
+            console.error(e);
+            return 'There has been an unknown error. Please refresh and try again.'
+        });
     }
 
     return (
         <>
             <Navbar />
-            <div className="register main-container grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-                <main className="register flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-                    <h1>Register for GoGCommunity.com</h1>
+            <div className="register main-container grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-20">
+                <main className="register flex flex-col gap-[32px] row-start-2 sm:items-start">
+                    <h1>Register<span class="desktop-only"> for GoGCommunity.com</span></h1>
                     <form id="register-form" onSubmit={(e) => {handleRegister(e)}}>
                         <div className="input-group username">
                             <label>Username</label>
