@@ -7,14 +7,14 @@ const db = new PrismaClient();
 
 /* register new user */
 async function validateNewUser(data) {
-    const duplicateEmail = await db.users.findFirst({
+    const duplicateEmail = await db.users.findMany({
         where: {
             email: data.email,
         }
     });
 
     // if duplicate email, we won't even get here.
-    const duplicateUN = await db.users.findFirst({
+    const duplicateUN = await db.users.findMany({
         where: {
             username: data.username,
         }
