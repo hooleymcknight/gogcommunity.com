@@ -21,13 +21,26 @@
 
 html {
     width: 100vw;
-    overflow-x: hidden;
+    height: 100vh;
+    overflow: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    background-image: url(/purple-spotlight.png);
+    background-position: 50%;
+    background-size: cover;
+}
+
+.main-container {
+    display: block;
+    width: 100vw;
+    height: 100%;
+    overflow-y: auto;
+    margin-top: 132px;
+    padding-top: 40px;
 }
 
 .main-container .homepage-logo {
@@ -56,7 +69,11 @@ body {
 
 /* navbar */
 .navbar {
-    position: relative;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    /* position: relative; */
     z-index: 200;
     display: flex;
     align-items: center;
@@ -181,10 +198,13 @@ a.inline:hover,
 }
 
 @media (max-width: 767px) {
-    .navbar {
+    .desktop-only {
+        display: none;
+    }
+    /* .navbar {
         max-width: 98%;
         overflow: hidden;
-    }
+    } */
     .navbar-buttons {
         flex-direction: column;
         row-gap: 10px;
@@ -193,5 +213,10 @@ a.inline:hover,
     }
     .homepage-logo img {
         max-width: 150px;
+    }
+    .main-container {
+        margin-top: 175px;
+        height: calc(100vh - 175px);
+        overflow-y: auto;
     }
 }

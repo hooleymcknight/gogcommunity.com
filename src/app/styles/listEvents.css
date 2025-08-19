@@ -1,18 +1,8 @@
 .main-container.portal {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background-image: url('/purple-spotlight.png');
-    background-position: center center;
-    background-size: cover;
-    padding-bottom: 0;
+    /* padding-bottom: 0; */
 }
 
 main.portal, main.events {
@@ -130,8 +120,7 @@ main.portal, main.events {
 @media (max-width: 767px) {
     main.portal, main.events {
         width: 100%;
-        padding: 10px;
-        margin-top: 20px;
+        overflow-y: auto;
     }
     main.portal h1,
     main.events h1 {
