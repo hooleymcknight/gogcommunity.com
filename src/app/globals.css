@@ -35,10 +35,12 @@ body {
 }
 
 .main-container {
-    display: block;
     width: 100vw;
     height: 100%;
     overflow-y: auto;
+}
+.main-container:not(.index-main-container) {
+    display: block;
     margin-top: 132px;
     padding-top: 40px;
 }

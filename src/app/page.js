@@ -52,7 +52,7 @@ export default function Home() {
                 </video>
                 <button id="skip-intro" onClick={skipIntro}>Skip <FontAwesomeIcon icon={faChevronRight} /></button>
             </div>
-            <div className="main-container fixed w-full top-0 left-0 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 menu-hidden">
+            <div className="main-container index-main-container flex fixed w-full top-0 left-0 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 menu-hidden">
                 <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
 
                     <div className="fireteam">

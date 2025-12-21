@@ -43,6 +43,12 @@
     cursor: pointer;
 }
 
+.index-main-container.main-container {
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+}
+
 /* login link */
 .fireteam {
     position: fixed;
